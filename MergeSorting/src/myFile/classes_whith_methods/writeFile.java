@@ -1,30 +1,28 @@
 package myFile.classes_whith_methods;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class writeFile {
-    public static void write(String fileName) {
+    public static void write(String[] mas) {
         Scanner scanner = new Scanner(System.in);
-        File file = new File(fileName);
+        for (int i = 0; i < mas.length; i++) {
+            try (FileWriter writer = new FileWriter(mas[i], false)) {
+                int[] array = new int[3];
 
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            try (PrintWriter out = new PrintWriter(file.getAbsoluteFile())) {
-                int number = 0;
-                System.out.println("-1 - exit");
-                while (number != -1) {
-                    number = scanner.nextInt();
-                    out.println(number);
+                for (int j = 0; j < 3; j++) {
+                    System.out.println("Enter number:");
+                    array[i] = scanner.nextInt();
                 }
+
+                for (int k : array) {
+                    writer.append('*');
+                    System.out.println();
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }
