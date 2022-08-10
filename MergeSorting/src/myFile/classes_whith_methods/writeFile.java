@@ -15,19 +15,13 @@ public class writeFile {
                 file.createNewFile();
             }
 
-            PrintWriter out = new PrintWriter(file.getAbsoluteFile());
-
-            int number = 0;
-            System.out.println("-1 - exit");
-
-            try {
+            try (PrintWriter out = new PrintWriter(file.getAbsoluteFile())) {
+                int number = 0;
+                System.out.println("-1 - exit");
                 while (number != -1) {
                     number = scanner.nextInt();
                     out.println(number);
                 }
-            }
-            finally {
-                out.close();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
