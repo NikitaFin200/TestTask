@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MergeSorting/MergeSorting.iml" filepath="$PROJECT_DIR$/MergeSorting/MergeSorting.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/TestTask.iml" filepath="$PROJECT_DIR$/.idea/TestTask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/untitled/untitled.iml" filepath="$PROJECT_DIR$/untitled/untitled.iml" />
     </modules>
   </component>
 </project>
