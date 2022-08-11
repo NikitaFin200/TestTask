@@ -6,6 +6,7 @@ import myFile.classes_whith_methods.writeFile;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -41,8 +42,14 @@ public class Main {
         System.out.println(Arrays.toString(mas));*/
 
         String[] array = {"in1.txt", "in2.txt", "in3.txt"};
+        Object[] mas = new Object[0];
+        for (int i = 0; i < array.length; i++) {
+            writeFile.write(array[i]);
+            mas = readFile.read(array[0]).toArray();
+            System.out.println(Arrays.toString(new Vector[]{readFile.read(array[i])}));
+        }
 
-        writeFile.write(array[0]);
-        System.out.println(Arrays.toString(readFile.read(array[0])));
+        System.out.println("mas" + Arrays.toString(mas));
+
     }
 }
