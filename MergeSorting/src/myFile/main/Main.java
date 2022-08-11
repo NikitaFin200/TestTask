@@ -45,16 +45,36 @@ public class Main {
         String[] array = {"in1.txt", "in2.txt", "in3.txt"};
         String[] mas1 = new String[1];
         String[] mas2 = new String[1];
+        String[] mas3 = new String[1];
+
         for (int i = 0; i < array.length; i++) {
             writeFile.write(array[i]);
-            mas1 = readFile.read(array[0]).toArray(mas1);
-            mas2 = readFile.read(array[1]).toArray(mas2);
             System.out.println(Arrays.toString(new Vector[]{readFile.read(array[i])}));
         }
 
-        System.out.println("mas" + Arrays.toString(mas1));
-        System.out.println("mas" + Arrays.toString(mas2));
+        mas1 = readFile.read(array[0]).toArray(mas1);
+        mas2 = readFile.read(array[1]).toArray(mas2);
+        mas3 = readFile.read(array[2]).toArray(mas3);
 
-        MergeArray.merge(mas1, mas2);
+        System.out.println("mas1" + Arrays.toString(mas1));
+        System.out.println("mas2" + Arrays.toString(mas2));
+        System.out.println("mas3" + Arrays.toString(mas3));
+
+        int[] newMas1 = new int[mas1.length];
+        int[] newMas2 = new int[mas2.length];
+        int[] newMas3 = new int[mas3.length];
+
+        for (int i = 0; i < newMas1.length; i++) {
+            newMas1[i] = Integer.parseInt(mas1[i]);
+        }
+        for (int i = 0; i < newMas2.length; i++) {
+            newMas2[i] = Integer.parseInt(mas2[i]);
+        }
+        for (int i = 0; i < newMas3.length; i++) {
+            newMas3[i] = Integer.parseInt(mas3[i]);
+        }
+
+        int count = 2;
+        System.out.println(Arrays.toString(MergeArray.merge(newMas1, newMas2, newMas3,count)));
     }
 }

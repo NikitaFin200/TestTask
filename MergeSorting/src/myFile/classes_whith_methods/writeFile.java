@@ -9,11 +9,10 @@ public class writeFile {
         Scanner scanner = new Scanner(System.in);
         Vector<String> vector = new Vector<>();
         File file = new File(name);
-        System.out.println("1 - exit");
-        System.out.println("2 - continue");
         int number;
 
-        int command = scanner.nextInt();
+        int command = 2;
+
         while (command != 1) {
             if (command == 2) {
                 System.out.println("Please, enter number:");
