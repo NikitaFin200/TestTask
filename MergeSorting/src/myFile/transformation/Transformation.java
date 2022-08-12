@@ -1,7 +1,5 @@
 package myFile.transformation;
 
-import java.util.Vector;
-
 public class Transformation {
     public static int[] transformation(String[] stringArray) {
         int[] array = new int[stringArray.length];

@@ -1,27 +1,27 @@
-package myFile.sort;
+package myFile.transformation;
 
 import java.util.Vector;
 
 public class PyramidSort {
-    public static Vector<String> sorttt(Vector<String> vector) {
-        int[] array = new int[vector.size()];
+    public static void sort(Vector<String> vector) {
+        int[] arrayIntegerVector = new int[vector.size()];
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = Integer.parseInt(vector.get(i));
+        for (int i = 0; i < arrayIntegerVector.length; i++) {
+            arrayIntegerVector[i] = Integer.parseInt(vector.get(i));
         }
 
-        heapSort(array);
-        Vector<Integer> arr = new Vector<>();
+        heapSort(arrayIntegerVector);
+        Vector<Integer> vectorInteger = new Vector<>();
 
-        for (int i = 0; i < array.length; i++) {
-            arr.add(i, array[i]);
+        for (int i = 0; i < arrayIntegerVector.length; i++) {
+            vectorInteger.add(i, arrayIntegerVector[i]);
         }
 
-        for (Integer integer : arr) {
+        vector.clear();
+
+        for (Integer integer : vectorInteger) {
             vector.add(String.valueOf(Integer.parseInt(String.valueOf(integer))));
         }
-
-        return vector;
     }
 
     public static void sift(int[] array, int length, int i) {
