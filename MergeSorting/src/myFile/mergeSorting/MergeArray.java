@@ -2,7 +2,7 @@ package myFile.mergeSorting;
 
 public class MergeArray {
     public static int[] merge(int[] mas1, int[] mas2, int[] mas3, int count) {
-        int[] newArray = new int[mas1.length + mas2.length];
+        int[] newArray = new int[mas1.length + mas2.length];                    //провдим слияние массивов
 
         int i = 0, j = 0;
 
