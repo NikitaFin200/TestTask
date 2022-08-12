@@ -13,54 +13,54 @@ import java.util.Vector;
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        Vector<String> vec = new Vector<>();
-        String[] array = {"in1.txt", "in2.txt", "in3.txt"};
-        String[] mas1 = new String[1];
-        String[] mas2 = new String[1];
-        String[] mas3 = new String[1];
+
+        String[] fileNamesArray = {"in1.txt", "in2.txt", "in3.txt"};  //массив с именами файлов, который будем сливать в единный
 
         int number;
-        int counter = 0;
+        int counter = 0;   //счетчик количества файлов в массиве
 
         do {
-            Vector<String> vector = new Vector<>();
+            Vector<String> vector = new Vector<>();    //объявление вектора для заполнения его числами
             int command = 2;
+
             while (command != 1) {
                 if (command == 2) {
                     System.out.println("Please, enter number:");
                     number = scanner.nextInt();
-                    vector.add(String.valueOf(number));
+                    vector.add(String.valueOf(number)); //если команда 2, то в конец вектора добавляем число, которое ввели
                 }
 
+                System.out.println("1-exit");
+                System.out.println("2-continue");
                 System.out.println("Please, enter command:");
-                command = scanner.nextInt();
+                command = scanner.nextInt();    //если введем команду 1, то внутренний цикл while прекратится
             }
 
-            writeFile.write(array[counter], vector);
-            System.out.println(Arrays.toString(new Vector[]{readFile.read(array[counter])}));
-            counter++;
-        } while (counter != array.length);
+            writeFile.write(fileNamesArray[counter], vector);       //создает файл с названием из нашего массива, и записывает на каждую строку этого файла элемент вектора
+            System.out.println(Arrays.toString(new Vector[]{readFile.read(fileNamesArray[counter])}));    //данные файла заполняются в вектор и выводится в консоль(для того, чтобы сразу увидеть что ввели)
+            counter++; //счетчик количества файлов
+        } while (counter != fileNamesArray.length);
 
-        mas1 = readFile.read(array[0]).toArray(mas1);
-        mas2 = readFile.read(array[1]).toArray(mas2);
-        mas3 = readFile.read(array[2]).toArray(mas3);
+        String[] stringElementsArray1 = new String[1];         //объявляем 3 массива тип String, для того чтобы потом в них передать элементы с вектора
+        String[] stringElementsArray2 = new String[1];
+        String[] stringElementsArray3 = new String[1];
 
-        System.out.println("mas1" + Arrays.toString(mas1));
-        System.out.println("mas2" + Arrays.toString(mas2));
-        System.out.println("mas3" + Arrays.toString(mas3));
+        stringElementsArray1 = readFile.read(fileNamesArray[0]).toArray(stringElementsArray1);    //переносим значения вектора в массива
+        stringElementsArray2 = readFile.read(fileNamesArray[1]).toArray(stringElementsArray2);
+        stringElementsArray3 = readFile.read(fileNamesArray[2]).toArray(stringElementsArray3);
 
-        int[] newMas1 = new int[mas1.length];
-        int[] newMas2 = new int[mas2.length];
-        int[] newMas3 = new int[mas3.length];
+        int[] newMas1 = new int[stringElementsArray1.length];    //объявляем 3 целочисленных массивов
+        int[] newMas2 = new int[stringElementsArray2.length];
+        int[] newMas3 = new int[stringElementsArray3.length];
 
-        for (int i = 0; i < newMas1.length; i++) {
-            newMas1[i] = Integer.parseInt(mas1[i]);
+        for (int i = 0; i < newMas1.length; i++) {                //преоброзуем массив строк в целочисленный массив
+            newMas1[i] = Integer.parseInt(stringElementsArray1[i]);
         }
         for (int i = 0; i < newMas2.length; i++) {
-            newMas2[i] = Integer.parseInt(mas2[i]);
+            newMas2[i] = Integer.parseInt(stringElementsArray2[i]);
         }
         for (int i = 0; i < newMas3.length; i++) {
-            newMas3[i] = Integer.parseInt(mas3[i]);
+            newMas3[i] = Integer.parseInt(stringElementsArray3[i]);
         }
 
         int count = 2;
@@ -72,7 +72,9 @@ public class Main {
             fin[i] = String.valueOf(y[i]);
         }
 
-        Collections.addAll(vec, fin);
-        writeFile.write("final.txt", vec);
+        Vector<String> finalVector = new Vector<>();       //объявление ветора, для итоговых значений
+
+        Collections.addAll(finalVector, fin);
+        writeFile.write("final.txt", finalVector);
     }
 }
