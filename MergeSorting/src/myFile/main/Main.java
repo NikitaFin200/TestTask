@@ -56,15 +56,18 @@ public class Main {
         for (int i = 0; i < newMas1.length; i++) {                //преоброзуем массив строк в целочисленный массив
             newMas1[i] = Integer.parseInt(stringElementsArray1[i]);
         }
+
         for (int i = 0; i < newMas2.length; i++) {
             newMas2[i] = Integer.parseInt(stringElementsArray2[i]);
         }
+
         for (int i = 0; i < newMas3.length; i++) {
             newMas3[i] = Integer.parseInt(stringElementsArray3[i]);
         }
 
         int count = 2;
         System.out.println(Arrays.toString(MergeArray.merge(newMas1, newMas2, newMas3, count)));
+
         int[] y = MergeArray.merge(newMas1, newMas2, newMas3, count);
         String[] fin = new String[y.length];
 
@@ -72,7 +75,7 @@ public class Main {
             fin[i] = String.valueOf(y[i]);
         }
 
-        Vector<String> finalVector = new Vector<>();       //объявление ветора, для итоговых значений
+        Vector<String> finalVector = new Vector<>();       //объявление ветора для итоговых значений
 
         Collections.addAll(finalVector, fin);
         writeFile.write("final.txt", finalVector);
