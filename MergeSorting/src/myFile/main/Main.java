@@ -3,8 +3,9 @@ package myFile.main;
 import myFile.classes_whith_methods.readFile;
 import myFile.classes_whith_methods.writeFile;
 import myFile.mergeSorting.MergeArray;
+import myFile.transformation.Transformation;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
@@ -36,7 +37,44 @@ public class Main {
                 command = scanner.nextInt();    //если введем команду 1, то внутренний цикл while прекратится
             }
 
-            writeFile.write(fileNamesArray[counter], vector);       //создает файл с названием из нашего массива, и записывает на каждую строку этого файла элемент вектора
+            System.out.println(fileNamesArray[counter]);
+
+            for (int i = 1; i < vector.size(); i++) {
+                boolean sir = false;
+
+                try {
+                    int first = Integer.parseInt(vector.get(i - 1));
+                    int second = Integer.parseInt(vector.get(i));
+
+                    if (first > second) {
+                        throw new NullPointerException("The vector is not sorted");
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Do you want sort hin?");
+                    System.out.println("0-no");
+                    System.out.println("1-yes");
+
+                    while (true) {
+                        int answer = scanner.nextInt();
+
+                        if (answer == 0) {
+                            throw new IllegalArgumentException("vector is not sorted");
+                        } else if (answer == 1) {
+
+                            break;
+                        } else {
+                            System.out.println("not correct, try again:");
+                        }
+                    }
+
+                } finally {
+                    writeFile.write(fileNamesArray[counter], vector);       //создает файл с названием из нашего массива, и записывает на каждую строку этого файла элемент вектора
+                }
+
+
+            }
+
             System.out.println(Arrays.toString(new Vector[]{readFile.read(fileNamesArray[counter])}));    //данные файла заполняются в вектор и выводится в консоль(для того, чтобы сразу увидеть что ввели)
             counter++; //счетчик количества файлов
         } while (counter != fileNamesArray.length);
@@ -49,21 +87,11 @@ public class Main {
         stringElementsArray2 = readFile.read(fileNamesArray[1]).toArray(stringElementsArray2);
         stringElementsArray3 = readFile.read(fileNamesArray[2]).toArray(stringElementsArray3);
 
-        int[] newMas1 = new int[stringElementsArray1.length];    //объявляем 3 целочисленных массивов
-        int[] newMas2 = new int[stringElementsArray2.length];
-        int[] newMas3 = new int[stringElementsArray3.length];
+            //объявляем 3 целочисленных массивов
 
-        for (int i = 0; i < newMas1.length; i++) {                //преоброзуем массив строк в целочисленный массив
-            newMas1[i] = Integer.parseInt(stringElementsArray1[i]);
-        }
-
-        for (int i = 0; i < newMas2.length; i++) {
-            newMas2[i] = Integer.parseInt(stringElementsArray2[i]);
-        }
-
-        for (int i = 0; i < newMas3.length; i++) {
-            newMas3[i] = Integer.parseInt(stringElementsArray3[i]);
-        }
+        int[] newMas1 = Transformation.transformation(stringElementsArray1);   //преоброзуем массив строк в целочисленный массив
+        int[] newMas2 = Transformation.transformation(stringElementsArray2);
+        int[] newMas3 = Transformation.transformation(stringElementsArray3);
 
         int count = 2;
         System.out.println(Arrays.toString(MergeArray.merge(newMas1, newMas2, newMas3, count)));
