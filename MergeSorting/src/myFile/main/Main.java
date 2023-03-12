@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Please enter name of output file:");
+        System.out.println("Please enter name of output fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee:");
         String outputFileName = scanner.nextLine();
 
         System.out.println("Please enter names of the three input files:");
